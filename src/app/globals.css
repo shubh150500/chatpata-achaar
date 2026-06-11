@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-red: #b71c1c;
+  --brand-saffron: #ff6f00;
+  --brand-mustard: #f9a825;
+  --brand-cream: #fff8e1;
+  --brand-ink: #111111;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--brand-ink);
+  color: var(--brand-cream);
+  font-feature-settings: "liga" 1, "kern" 1;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0c0606;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff6f00, #b71c1c);
+  border-radius: 10px;
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+  .glass-strong {
+    @apply bg-white/10 backdrop-blur-2xl border border-white/15;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, #f9a825, #ff6f00, #b71c1c);
+  }
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, #fff8e1, #f9a825, #ff6f00);
+  }
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3
+      font-semibold text-white transition-all duration-300
+      bg-gradient-to-r from-brand-saffron to-brand-red
+      hover:shadow-glow hover:scale-[1.03] active:scale-95;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3
+      font-medium text-brand-cream border border-white/20
+      hover:bg-white/10 transition-all duration-300;
+  }
+  .section-pad {
+    @apply px-5 sm:px-8 lg:px-16 py-20 sm:py-28;
+  }
+  .eyebrow {
+    @apply uppercase tracking-[0.3em] text-xs font-semibold text-brand-mustard;
+  }
+}
+
+/* shimmering gold divider */
+.gold-line {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(249, 168, 37, 0.8),
+    transparent
+  );
+  background-size: 200% 100%;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.perspective {
+  perspective: 1000px;
+}
